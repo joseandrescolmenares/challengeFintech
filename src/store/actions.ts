@@ -19,11 +19,10 @@ export function getAllMovies() {
   };
 }
 export function SearchMovie(title: string) {
-console.log(title)
   return async function (dispatch: Dispatch) {
     return dispatch({
       type: types.SEARCH_MOVIE,
-      payload: id,
+      payload: title,
     });
   };
 }

@@ -1,15 +1,14 @@
 import React from "react";
 
 import { CardMovie } from "./CardMovie";
-import style from "../styles/ViewerMovie.module.css"
+import style from "../styles/ViewerMovie.module.css";
 
 interface Movie {
   id: number;
   title: string;
 }
 
-export  const ViewerMovies = ({stateMovie}) => {
- 
+export const ViewerMovies = ({ stateMovie }) => {
   return (
     <div className={style.container}>
       {stateMovie
@@ -25,5 +24,3 @@ export  const ViewerMovies = ({stateMovie}) => {
     </div>
   );
 };
-
-
