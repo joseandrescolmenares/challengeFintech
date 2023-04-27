@@ -13,7 +13,10 @@ const nextConfig = {
       }))
     }
     return config
-  }
+  },
+  images: {
+    domains: ['image.tmdb.org'],
+  },
 
 }
 

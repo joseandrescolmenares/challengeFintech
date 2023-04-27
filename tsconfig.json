@@ -18,6 +18,6 @@
       "@/*challenge": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/ErrorBoundary.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/ErrorBoundary.js", "src/pages/index.tsx"],
   "exclude": ["node_modules"]
 }
