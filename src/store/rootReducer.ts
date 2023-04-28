@@ -63,11 +63,10 @@ function rootReducer(state: RootState = initialState, action: any) {
       const filterfavorites = stateFavorites.find(
         (movi: Movie) => movi.id == action.payload
       );
-      const test = state.movieFavorite.find((el) => el.id == action.payload);
-      console.log(test, action.payload);
+      const filmFound = state.movieFavorite.find((el) => el.id == action.payload);
       return {
         ...state,
-        movieFavorite: test
+        movieFavorite: filmFound 
           ? [...state.movieFavorite]
           : [...state.movieFavorite, filterfavorites],
         loanding: false,
