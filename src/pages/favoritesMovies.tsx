@@ -8,10 +8,9 @@ const FavoritesMovies = () => {
   const allMoviesFavorites = useSelector(
     (state: RootState) => state.movieFavorite
   );
-  console.log(allMoviesFavorites);
   return (
     <div>
-      <ViewerMovies stateMovie={allMoviesFavorites} />
+      <ViewerMovies stateMovie={allMoviesFavorites}  favorite="favorite"/>
     </div>
   );
 };

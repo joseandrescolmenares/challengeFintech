@@ -8,11 +8,11 @@ import { Props } from "../utils/types";
 import { AddFavorites } from "./AddFavorites";
 
 
-export const CardMovie = ({ id, title, img }: Props) => {
+export const CardMovie = ({ id, title, img, favorite }: Props) => {
   return (
     <div className={style.containerCards}>
-      <AddFavorites id={id}/>
-      <Link href={`/${id}`}>
+      {favorite !== "favorite" ?  <AddFavorites id={id}/>: null }
+      <Link className={style.link} href={`/${id}`}>
         <h1 className={style.title}>{title}</h1>
       </Link>
       <div className={style.img}>

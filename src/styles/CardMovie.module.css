@@ -1,12 +1,21 @@
 .containerCards{
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 230px;
+    height: 350px;
+    background-color: rgb(4, 4, 4);
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 10px;
 }
 .title{
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 22px;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+}
+.link{
+ text-decoration: none;
 }

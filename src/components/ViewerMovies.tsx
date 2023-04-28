@@ -5,7 +5,7 @@ import style from "../styles/ViewerMovie.module.css";
 import { Movie } from "../utils/types";
 
 
-export const ViewerMovies = ({ stateMovie }) => {
+export const ViewerMovies = ({ stateMovie, favorite }) => {
   return (
     <div className={style.container}>
       {stateMovie
@@ -15,6 +15,7 @@ export const ViewerMovies = ({ stateMovie }) => {
               id={movie?.id}
               title={movie?.title}
               img={movie?.backdrop_path}
+              favorite={favorite}
             />
           ))
         : null}
