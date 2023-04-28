@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import { getAllMovies } from "../store/actions";
+import { getAllMovies,edi } from "../store/actions";
 import { Navbar } from "../components/Navbar";
 import { ViewerMovies } from "../components/ViewerMovies";
 import styles from "../styles/Home.module.css";
@@ -11,7 +11,7 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allMovies = useSelector((state) => state.allMovies);
-
+ console.log(allMovies)
   useEffect(() => {
     dispatch(getAllMovies());
   }, [dispatch]);

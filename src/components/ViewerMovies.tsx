@@ -6,6 +6,7 @@ import style from "../styles/ViewerMovie.module.css";
 interface Movie {
   id: number;
   title: string;
+  backdrop_path : string
 }
 
 export const ViewerMovies = ({ stateMovie }) => {
@@ -14,10 +15,10 @@ export const ViewerMovies = ({ stateMovie }) => {
       {stateMovie
         ? stateMovie.map((movie: Movie) => (
             <CardMovie
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              img={movie.backdrop_path}
+              key={movie?.id}
+              id={movie?.id}
+              title={movie?.title}
+              img={movie?.backdrop_path}
             />
           ))
         : null}

@@ -27,17 +27,30 @@ export function SearchMovie(title: string) {
   };
 }
 
-export function addCommnetary(commentary: string) {
+export function addCommnetary(commentary: string, id: number) {
   return async function (dispatch: Dispatch) {
-    try {
-      const data = await axios.get("http://localhost:3001/types");
-      return dispatch({
-        type: "GET_TYPES",
-        payload: data.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    return dispatch({
+      type: types.ADD_MOVIE_COMMENTARY,
+      payload: { commentary, id },
+    });
+  };
+}
+
+export function searchComment(id: number) {
+  return async function (dispatch: Dispatch) {
+    return dispatch({
+      type: types.ADD_MOVIE_COMMENTARY,
+      payload: id,
+    });
+  };
+}
+export function details(id: number) {
+  return async function (dispatch: Dispatch) {
+    dispatch(getAllMovies());
+    return dispatch({
+      type: types.MOVIE_DETAILS,
+      payload: id,
+    });
   };
 }
 

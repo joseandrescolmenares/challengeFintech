@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AddComment } from "./AddComment";
 import style from "../styles/CardMovie.module.css";
 
 interface Props {
@@ -25,6 +26,7 @@ export const CardMovie = ({ id, title, img }: Props) => {
           height={200}
         />
       </div>
+      <AddComment id={id}/>
     </div>
   );
 };

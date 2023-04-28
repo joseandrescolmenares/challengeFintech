@@ -3,6 +3,7 @@ interface RootState {
   allMovies: [];
   movieDetails: [];
   movieFavorite: [];
+  comment: [];
   loader: boolean;
 }
 
@@ -10,12 +11,12 @@ const initialState: RootState = {
   allMovies: [],
   movieDetails: [],
   movieFavorite: [],
+  comment: [],
   loader: false,
 };
 
 function rootReducer(state: RootState = initialState, action: any) {
   switch (action.type) {
-    // Define tus casos de acciones aquí
     case types.GET_MOVIES_ALL:
       return {
         ...state,
@@ -30,6 +31,22 @@ function rootReducer(state: RootState = initialState, action: any) {
       return {
         ...state,
         allMovies: foundFilm,
+        loanding: false,
+      };
+    case types.MOVIE_DETAILS:
+      const details = [...state.allMovies];
+      const resultMovi = details.filter(
+        (movies) => movies.id == action.payload
+      );
+      return {
+        ...state,
+        movieDetails: [...resultMovi],
+        loanding: false,
+      };
+    case types.ADD_MOVIE_COMMENTARY:
+      return {
+        ...state,
+        comment: [...state.comment,action.payload],
         loanding: false,
       };
 
