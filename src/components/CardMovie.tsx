@@ -4,17 +4,14 @@ import Link from "next/link";
 
 import { AddComment } from "./AddComment";
 import style from "../styles/CardMovie.module.css";
+import { Props } from "../utils/types";
+import { AddFavorites } from "./AddFavorites";
 
-interface Props {
-  id: number;
-  title: string;
-  img: string;
-  description: string;
-}
 
 export const CardMovie = ({ id, title, img }: Props) => {
   return (
     <div className={style.containerCards}>
+      <AddFavorites id={id}/>
       <Link href={`/${id}`}>
         <h1 className={style.title}>{title}</h1>
       </Link>
@@ -26,7 +23,7 @@ export const CardMovie = ({ id, title, img }: Props) => {
           height={200}
         />
       </div>
-      <AddComment id={id}/>
+      <AddComment id={id} />
     </div>
   );
 };

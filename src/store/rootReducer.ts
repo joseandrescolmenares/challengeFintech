@@ -1,11 +1,7 @@
+import FavoritesMovies from "@/pages/FavoritesMovieschallenge";
 import * as types from "../store/types";
-interface RootState {
-  allMovies: [];
-  movieDetails: [];
-  movieFavorite: [];
-  comment: [];
-  loader: boolean;
-}
+import { Movie } from "../utils/types";
+import { RootState } from "../utils/types";
 
 const initialState: RootState = {
   allMovies: [],
@@ -25,7 +21,7 @@ function rootReducer(state: RootState = initialState, action: any) {
       };
     case types.SEARCH_MOVIE:
       const backingState = [...state.allMovies];
-      const foundFilm = backingState.filter((movie) =>
+      const foundFilm = backingState.filter((movie: Movie) =>
         movie.title.toLowerCase().includes(action.payload.toLowerCase())
       );
       return {
@@ -36,17 +32,44 @@ function rootReducer(state: RootState = initialState, action: any) {
     case types.MOVIE_DETAILS:
       const details = [...state.allMovies];
       const resultMovi = details.filter(
-        (movies) => movies.id == action.payload
+        (movies: Movie) => movies.id == action.payload
       );
       return {
         ...state,
         movieDetails: [...resultMovi],
         loanding: false,
       };
+
+    // En este caso, debido a restricciones de tiempo, no se implementó una base de datos para almacenar los comentarios, lo cual sería lo ideal en esta situación. En su lugar, se simuló una tabla en la que se guardan los comentarios de cada publicación utilizando el estado de Redux.
     case types.ADD_MOVIE_COMMENTARY:
       return {
         ...state,
-        comment: [...state.comment,action.payload],
+        comment: [...state.comment, action.payload],
+        loanding: false,
+      };
+    case types.SEARCH_COMMENT:
+      const stateComment = [...state.comment];
+      const result = stateComment.filter(
+        (comment: Movie) => comment.id == action.payload
+      );
+      return {
+        ...state,
+        comment: result,
+        loanding: false,
+      };
+
+    case types.ADD_FAVORITE_MOVIE:
+      const stateFavorites = [...state.allMovies];
+      const filterfavorites = stateFavorites.find(
+        (movi: Movie) => movi.id == action.payload
+      );
+      const test = state.movieFavorite.find((el) => el.id == action.payload);
+      console.log(test, action.payload);
+      return {
+        ...state,
+        movieFavorite: test
+          ? [...state.movieFavorite]
+          : [...state.movieFavorite, filterfavorites],
         loanding: false,
       };
 

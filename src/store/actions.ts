@@ -39,13 +39,24 @@ export function addCommnetary(commentary: string, id: number) {
 export function searchComment(id: number) {
   return async function (dispatch: Dispatch) {
     return dispatch({
-      type: types.ADD_MOVIE_COMMENTARY,
+      type: types.SEARCH_COMMENT,
       payload: id,
     });
   };
 }
+
+export function addFavorites(id: number) {
+  return async function (dispatch: Dispatch) {
+    return dispatch({
+      type: types.ADD_FAVORITE_MOVIE,
+      payload: id,
+    });
+  };
+}
+
 export function details(id: number) {
   return async function (dispatch: Dispatch) {
+    dispatch(searchComment(id));
     dispatch(getAllMovies());
     return dispatch({
       type: types.MOVIE_DETAILS,

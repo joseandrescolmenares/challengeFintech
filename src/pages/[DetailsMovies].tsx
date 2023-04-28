@@ -6,23 +6,19 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import { details } from "../store/actions";
+import { Movie } from "../utils/types";
+import { RootState } from "../utils/types";
 
-interface Movie {
+interface Comment {
   id: number;
-  title: string;
-  overview: string
-  popularity:number
-  release_date :number
-  original_language : string
-  comments : []
+  commentary: string;
 }
 
 const DetailsMovies = () => {
   const router = useRouter();
   const dispatch = useDispatch<Dispatch>();
-  const movieDetails = useSelector((state) => state.movieDetails)
-  const comment = useSelector((state) => state.comment);
-  console.log(comment)
+  const movieDetails = useSelector((state: RootState) => state.movieDetails);
+  const allcomment = useSelector((state: RootState) => state.comment);
 
   useEffect(() => {
     if (!router.query) return;
@@ -46,11 +42,13 @@ const DetailsMovies = () => {
               <p>{movie.release_date}</p>
               <p>{movie.original_language}</p>
               <p>comments</p>
-              {/* <div>
-                {movie.comments.map((comment) => (
-                  <p>{comment}</p>
-                ))}
-              </div> */}
+              <div>
+                {allcomment
+                  ? allcomment.map((comment: Comment, index: number) => (
+                      <p key={index}>{comment.commentary}</p>
+                    ))
+                  : null}
+              </div>
             </div>
           ))
         : null}

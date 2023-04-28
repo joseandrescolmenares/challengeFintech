@@ -3,10 +3,7 @@ import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import { addCommnetary } from "../store/actions";
-
-interface Props {
-  id: number;
-}
+import { Props } from "../utils/types";
 
 export const AddComment = ({ id }: Props) => {
   const dispatch = useDispatch<Dispatch>();

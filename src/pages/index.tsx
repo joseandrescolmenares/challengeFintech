@@ -1,17 +1,17 @@
 import Head from "next/head";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 
-import { getAllMovies,edi } from "../store/actions";
+import { useSelector } from "react-redux";
+import { getAllMovies } from "../store/actions";
 import { Navbar } from "../components/Navbar";
 import { ViewerMovies } from "../components/ViewerMovies";
 import styles from "../styles/Home.module.css";
+import { RootState } from "../utils/types";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allMovies = useSelector((state) => state.allMovies);
- console.log(allMovies)
+  const allMovies = useSelector((state:RootState) => state.allMovies);
   useEffect(() => {
     dispatch(getAllMovies());
   }, [dispatch]);
